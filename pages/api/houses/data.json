@@ -1,0 +1,37 @@
+{
+  "houses": [
+    {
+      "id": "1",
+      "name": "two bed flat",
+      "slug": "2-bed-flat",
+      "city": "London",
+      "county": "Lincolnshire",
+      "address": "919 3rd Ave New York, New York(NY), 10022",
+      "date": "June 09, 2021",
+      "bedrooms": "2",
+      "description": "A flat for you to live in with a bathroom and a kitchen"
+    },
+    {
+      "id": "2",
+      "name": "four bed flat",
+      "slug": "4-bed-flat",
+      "city": "London",
+      "county": "Lincolnshire",
+      "address": "919 3rd Ave New York, New York(NY), 10022",
+      "date": "June 09, 2021",
+      "bedrooms": "4",
+      "description": "A flat for you to live in with a bathroom and a kitchen"
+    },
+    {
+      "id": "3",
+      "name": "1 bed studio",
+      "slug": "1-bed-studio",
+      "city": "London",
+      "county": "Lincolnshire",
+      "address": "919 3rd Ave New York, New York(NY), 10022",
+      "date": "June 09, 2021",
+      "bedrooms": "1",
+      "description": "A flat for you to live in with a bathroom and a kitchen"
+    }
+  ]
+}

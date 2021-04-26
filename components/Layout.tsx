@@ -1,9 +1,10 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 
 import styles from '../styles/Layout.module.css';
-import { Footer } from './Footer';
-import { Header } from './Header';
+import Footer from './Footer';
+import Header from './Header';
 
 interface LayoutProps {
   title: string | 'areHouse for renting independently';
@@ -15,6 +16,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ title, description, keywords, children }: LayoutProps) => {
+  const router = useRouter();
   return (
     <div>
       <Head>
@@ -24,6 +26,7 @@ const Layout = ({ title, description, keywords, children }: LayoutProps) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
+      {router.pathname === '/' && <h2>Hero component goes here</h2>}
       <div className={styles.container}>{children}</div>
       <Footer />
     </div>

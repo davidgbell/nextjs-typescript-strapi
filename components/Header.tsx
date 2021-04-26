@@ -1,7 +1,7 @@
-import Link from 'next/Link';
+import Link from 'next/link';
 import styles from '../styles/Header.module.css';
 
-export const Header = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -26,3 +26,4 @@ export const Header = () => {
     </header>
   );
 };
+export default Header;
