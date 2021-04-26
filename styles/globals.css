@@ -159,3 +159,7 @@ select {
   display: grid;
   place-items: center;
 }
+
+a {
+  text-decoration: none;
+}

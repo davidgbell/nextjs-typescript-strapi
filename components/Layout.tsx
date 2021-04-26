@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { ReactNode } from 'react';
 
 import styles from '../styles/Layout.module.css';
+import { Footer } from './Footer';
+import { Header } from './Header';
 
 interface LayoutProps {
   title: string | 'areHouse for renting independently';
@@ -21,7 +23,9 @@ const Layout = ({ title, description, keywords, children }: LayoutProps) => {
         <meta name='keywords' content={keywords} />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      <Header />
       <div className={styles.container}>{children}</div>
+      <Footer />
     </div>
   );
 };
