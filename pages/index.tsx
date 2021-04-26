@@ -4,20 +4,23 @@ import { API_URL } from '../config';
 import Layout from '../components/Layout';
 import { HouseItem } from '../components/HouseItem';
 import Link from 'next/link';
+import { HouseProps } from '../interfaces/interface';
 
-export default function HomePage({
-  houses,
-}: InferGetServerSidePropsType<typeof getStaticProps>) {
-  console.log(houses);
+interface Props {
+  houses: HouseProps[];
+}
+
+export default function HomePage({ houses }: Props) {
   return (
     <Layout title='areHouse | find place to rent'>
       <main>
         <h1>Places available for rent</h1>
         {houses.length === 0 && <h3>No houses available to rent</h3>}
 
-        {houses.map((house: any) => (
-          <HouseItem key={house.id} house={house} />
-        ))}
+        {houses.length > 0 &&
+          houses.map((house: any) => (
+            <HouseItem key={house.id} house={house} />
+          ))}
         {houses.length > 0 && (
           <Link href='/houses'>
             <a>All Houses</a>

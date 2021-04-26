@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { HouseProps } from '../interfaces/interface';
 
 import styles from '../styles/HouseItem.module.css';
 
-export const HouseItem = ({ house }) => {
+interface Props {
+  house: HouseProps;
+}
+
+export const HouseItem = ({ house }: Props) => {
   return (
     <div className={styles.house}>
       <div className={styles.img}>

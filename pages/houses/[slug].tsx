@@ -3,14 +3,18 @@ import Layout from '../../components/Layout';
 import Image from 'next/image';
 import { API_URL } from '../../config';
 import Link from 'next/link';
+import { HouseProps } from '../../interfaces/interface';
 
-const housePage = ({ house }) => {
+interface Props {
+  house: HouseProps;
+}
+const housePage = ({ house }: Props) => {
   const deleteHouse = () => console.log(`delete ${house.name}`);
 
   return (
     <Layout title='House 1'>
       <div>
-        {house > 0 && (
+        {house && (
           <div>
             <Link href={`/houses/edit/${house.id}`}>
               <a>Edit</a>
@@ -20,6 +24,7 @@ const housePage = ({ house }) => {
             </a>
           </div>
         )}
+
         {house.image && (
           <Image
             src={
@@ -31,7 +36,6 @@ const housePage = ({ house }) => {
             height={600}
           />
         )}
-
         <h1>{house.name}</h1>
         <span>
           {house.bedrooms} {house.bedrooms > 1 ? 'bedrooms' : 'bedroom'}
@@ -67,8 +71,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
-  const res = await fetch(`${API_URL}/homes?slug=${slug}`);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const res = await fetch(`${API_URL}/homes?slug=${params?.slug}`);
 
   const house = await res.json();
 
