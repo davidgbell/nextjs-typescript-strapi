@@ -29,7 +29,7 @@ export default function HomePage({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${API_URL}/api/houses`);
+  const res = await fetch(`${API_URL}/homes?_sort=dateAvailable:ASC&_limit=2`);
   const houses = await res.json();
 
   return {

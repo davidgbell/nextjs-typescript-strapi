@@ -7,7 +7,6 @@ import { HouseItem } from '../../components/HouseItem';
 export default function HousesPage({
   houses,
 }: InferGetServerSidePropsType<typeof getStaticProps>) {
-  console.log(houses);
   return (
     <Layout title='areHouse | find place to rent'>
       <main>
@@ -23,7 +22,7 @@ export default function HousesPage({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${API_URL}/api/houses`);
+  const res = await fetch(`${API_URL}/homes?_sort=dateAvailable:ASC`);
   const houses = await res.json();
 
   return {

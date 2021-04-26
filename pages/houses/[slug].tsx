@@ -10,15 +10,23 @@ const housePage = ({ house }) => {
   return (
     <Layout title='House 1'>
       <div>
-        <Link href={`/houses/edit/${house.id}`}>
-          <a>Edit</a>
-        </Link>
-        <a href='#' onClick={deleteHouse}>
-          Delete
-        </a>
+        {house > 0 && (
+          <div>
+            <Link href={`/houses/edit/${house.id}`}>
+              <a>Edit</a>
+            </Link>
+            <a href='#' onClick={deleteHouse}>
+              Delete
+            </a>
+          </div>
+        )}
         {house.image && (
           <Image
-            src={house.image ? house.image : '/images/house-default.jpg'}
+            src={
+              house.image
+                ? house.image.formats.medium.url
+                : '/images/house-default.jpg'
+            }
             width={960}
             height={600}
           />
@@ -36,13 +44,16 @@ const housePage = ({ house }) => {
         <p>{house.county}</p>
         <h3>Address:</h3>
         <p>{house.address}</p>
+        <p>
+          Available: {new Date(house.dateAvailable).toLocaleDateString('en-GB')}
+        </p>
       </div>
     </Layout>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch(`${API_URL}/api/houses`);
+  const res = await fetch(`${API_URL}/homes`);
 
   const houses = await res.json();
 
@@ -57,7 +68,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params: { slug } }) => {
-  const res = await fetch(`${API_URL}/api/houses/${slug}`);
+  const res = await fetch(`${API_URL}/homes?slug=${slug}`);
 
   const house = await res.json();
 
